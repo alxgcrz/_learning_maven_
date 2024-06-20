@@ -211,7 +211,6 @@ $ mvn compiler:help -Dgoal=compile -Ddetail
 - <http://maven.apache.org/ref/3.1.0/maven-embedder/cli.html>
 - <https://www.javaguides.net/2018/12/maven-commands-list-pdf.html>
 - <https://maven.apache.org/plugins/index.html>
-- <https://itnext.io/writing-a-full-featured-maven-pom-f5b874eef312>
 - <https://programmingtechie.com/2020/12/05/complete-maven-tutorial/>
 - <https://www.sonatype.com/maven-complete-reference>
 - <https://chenweixiang.github.io/docs/Maven_cheat_sheet.pdf>
