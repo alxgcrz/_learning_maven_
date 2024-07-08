@@ -204,7 +204,7 @@ $ mvn versions:help`
 $ mvn compiler:help -Dgoal=compile -Ddetail
 ```
 
-## Enlaces de interés
+## Referencias
 
 - <https://maven.apache.org/guides/index.html>
 - <https://maven.apache.org/guides/MavenQuickReferenceCard.pdf>
