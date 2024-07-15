@@ -206,14 +206,10 @@ $ mvn compiler:help -Dgoal=compile -Ddetail
 
 ## Referencias
 
-- <https://maven.apache.org/guides/index.html>
+- <https://maven.apache.org/index.html>
 - <https://maven.apache.org/guides/MavenQuickReferenceCard.pdf>
-- <http://maven.apache.org/ref/3.1.0/maven-embedder/cli.html>
-- <https://www.javaguides.net/2018/12/maven-commands-list-pdf.html>
-- <https://maven.apache.org/plugins/index.html>
-- <https://programmingtechie.com/2020/12/05/complete-maven-tutorial/>
+- <https://www.baeldung.com/maven-guide>
 - <https://www.sonatype.com/maven-complete-reference>
-- <https://chenweixiang.github.io/docs/Maven_cheat_sheet.pdf>
 
 ## Licencia
 
