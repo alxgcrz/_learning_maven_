@@ -6,21 +6,27 @@ Maven utiliza un **Project Object Model (POM)** para describir el proyecto de so
 
 Las partes del **ciclo de vida** principal del proyecto Maven son:
 
-1. **_compile_**: Genera los ficheros .class compilando los fuentes .java
-2. **_test_**: Ejecuta los test automáticos de JUnit existentes, abortando el proceso si alguno de ellos falla.
-3. **_package_**: Genera el fichero .jar con los .class compilados
-4. **_install_**: Copia el fichero .jar a un directorio de nuestro ordenador donde maven deja todos los .jar. De esta forma esos .jar pueden utilizarse en otros proyectos maven en el mismo ordenador.
-5. **_deploy_**: Copia el fichero .jar a un servidor remoto, poniéndolo disponible para cualquier proyecto maven con acceso a ese servidor remoto.
+1. `compile`: Genera los ficheros .class compilando los fuentes .java
 
-Cuando se ejecuta cualquiera de los comandos maven, por ejemplo, si ejecutamos **mvn install**, maven irá verificando todas las fases del ciclo de vida desde la primera hasta la del comando, ejecutando solo aquellas que no se hayan ejecutado previamente.
+2. `test`: Ejecuta los test automáticos de JUnit existentes, abortando el proceso si alguno de ellos falla.
+
+3. `package`: Genera el fichero .jar con los .class compilados
+
+4. `install`: Copia el fichero .jar a un directorio de nuestro ordenador donde maven deja todos los .jar. De esta forma esos .jar pueden utilizarse en otros proyectos maven en el mismo ordenador.
+
+5. `deploy`: Copia el fichero .jar a un servidor remoto, poniéndolo disponible para cualquier proyecto maven con acceso a ese servidor remoto.
+
+Cuando se ejecuta cualquiera de los comandos maven, por ejemplo, si ejecutamos `mvn install`, maven irá verificando todas las fases del ciclo de vida desde la primera hasta la del comando, ejecutando solo aquellas que no se hayan ejecutado previamente.
 
 También existen algunas metas que están fuera del ciclo de vida que pueden ser llamadas, pero Maven asume que estas metas no son parte del ciclo de vida por defecto (no tienen que ser siempre realizadas). Estas metas son:
 
-1. **_clean_**: Elimina todos los .class y .jar generados. Después de este comando se puede comenzar un compilado desde cero.
-2. **_assembly_**: Genera un fichero .zip con todo lo necesario para instalar nuestro programa java. Se debe configurar previamente en un fichero xml qué se debe incluir en ese zip.
-3. **_site_**: Genera un sitio web con la información de nuestro proyecto. Dicha información debe escribirse en el fichero pom.xml y ficheros .apt separados.
-4. **_site-deploy_**: Sube el sitio web al servidor que hayamos configurado.
-5. Etcétera...
+1. `clean` ➜ Elimina todos los .class y .jar generados. Después de este comando se puede comenzar un compilado desde cero.
+
+2. `assembly` ➜ Genera un fichero .zip con todo lo necesario para instalar nuestro programa java. Se debe configurar previamente en un fichero xml qué se debe incluir en ese zip.
+
+3. `site` ➜ Genera un sitio web con la información de nuestro proyecto. Dicha información debe escribirse en el fichero pom.xml y ficheros .apt separados.
+
+4. `site-deploy` ➜ Sube el sitio web al servidor que hayamos configurado.
 
 Pero estas metas pueden ser añadidas al ciclo de vida a través del **Project Object Model (POM)**.
 
@@ -35,7 +41,7 @@ $ mvn [options] [<goal(s)>] [<phase(s)>]
 
 ### Archetypes
 
-> :exclamation: **NOTA**: Si usamos una terminal PowerShell hay que usar las comillas dobles en los parámetros.
+> :warning: Si se usa una terminal PowerShell, hay que usar las **comillas dobles** en los parámetros.
 
 Maven tiene definidos una serie de [_archetypes_](https://maven.apache.org/archetypes/index.html) para generar proyectos de distinta índole con una estructura de ficheros concreta.
 
@@ -58,9 +64,11 @@ En Maven podemos ejecutar un _goal_ como por ejemplo `mvn archetype:generate` o 
 
 Los [ciclos de vida](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) de construcción y sus fases en orden son:
 
-1. **_Clean lifecycle_** - pre-clean, clean, post-clean
-2. **_Default lifecycle_** - validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy
-3. **_Site lifecycle_** - pre-site, site, post-site, site-deploy
+1. `Clean lifecycle` - pre-clean, clean, post-clean
+
+2. `Default lifecycle` - validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy
+
+3. `Site lifecycle` - pre-site, site, post-site, site-deploy
 
 Cuando indicamos a Maven que ejecute una fase, como por ejemplo `mvn compile`, Maven ejecutará cada fase previa en orden de forma secuencial incluida la fase usada en el comando.
 
@@ -125,7 +133,7 @@ $ mvn verify site
 
 De forma interna, para Maven los ciclos de vida corresponden a un _'plugin'_. Por ejemplo la fase _'clean'_ corresponde al plugin _'maven-clean-plugin'_. Por tanto, se podría invocar como `mvn clean` o usando el _goal_ `mvn clean:clean`.
 
-Maven incluye una serie de _'plugins'_ que forman parte de su _'núcleo'_ y que corresponden a las fases vistas anteriormente.
+Maven incluye una serie de _'plugins'_ que forman parte de su núcleo y que corresponden a las fases vistas anteriormente.
 
 La lista de _plugins_ oficiales y no oficiales soportados por Maven se puede consultar [aquí](https://maven.apache.org/plugins/index.html). Hay más listas de _plugins_ de Maven como por ejemplo [MojoHaus](http://www.mojohaus.org/plugins.html).
 
@@ -139,7 +147,7 @@ $ mvn clean install -DskipTests=true sonar:sonar
 $ mvn sonar:help
 ```
 
-:earth_americas: [Más información sobre el plugin](http://sonarsource.github.io/sonar-scanner-maven/plugin-info.html)
+- [Más información sobre el plugin](http://sonarsource.github.io/sonar-scanner-maven/plugin-info.html)
 
 #### Informes sobre los tests
 
@@ -151,7 +159,7 @@ $ mvn clean cobertura:cobertura
 $ mvn cobertura:help
 ```
 
-:earth_americas: [Más información sobre el plugin](http://www.mojohaus.org/cobertura-maven-plugin/)
+- [Más información sobre el plugin](http://www.mojohaus.org/cobertura-maven-plugin/)
 
 #### Administrar las versiones de los artefactos del proyecto
 
@@ -163,7 +171,7 @@ $ mvn versions:display-dependency-updates
 $ mvn versions:display-plugin-updates
 ```
 
-:earth_americas: [Más información sobre el plugin](https://www.mojohaus.org/versions/versions-maven-plugin/index.html)
+- [Más información sobre el plugin](https://www.mojohaus.org/versions/versions-maven-plugin/index.html)
 
 #### Administrar las dependencias del proyecto
 
@@ -175,7 +183,7 @@ $ mvn dependency:tree
 $ mvn dependency:analyze
 ```
 
-:earth_americas: [Más información sobre el plugin](https://maven.apache.org/plugins/maven-dependency-plugin/)
+- [Más información sobre el plugin](https://maven.apache.org/plugins/maven-dependency-plugin/)
 
 ### Ayuda
 
@@ -203,6 +211,8 @@ $ mvn versions:help`
 # Visualiza la ayuda en detalle de un _goal_ de un _plugin
 $ mvn compiler:help -Dgoal=compile -Ddetail
 ```
+
+---
 
 ## Referencias
 
