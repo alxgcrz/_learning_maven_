@@ -214,12 +214,14 @@ $ mvn compiler:help -Dgoal=compile -Ddetail
 
 ---
 
-## Referencias
+## Enlaces
 
 - <https://maven.apache.org/index.html>
 - <https://maven.apache.org/guides/MavenQuickReferenceCard.pdf>
-- <https://www.baeldung.com/maven-guide>
+- <https://www.baeldung.com/maven-series>
 - <https://www.sonatype.com/maven-complete-reference>
+- <https://www.javaguides.net/p/maven.html>
+- <https://github.com/apache/maven-mvnd>
 
 ## Licencia
 
