@@ -41,7 +41,7 @@ $ mvn [options] [<goal(s)>] [<phase(s)>]
 
 ### Archetypes
 
-> :warning: Si se usa una terminal PowerShell, hay que usar las **comillas dobles** en los parámetros.
+> :warning: Si se usa una terminal PowerShell, hay que usar las **comillas dobles** en los parámetros. :warning:
 
 Maven tiene definidos una serie de [_archetypes_](https://maven.apache.org/archetypes/index.html) para generar proyectos de distinta índole con una estructura de ficheros concreta.
 
@@ -62,19 +62,19 @@ $ mvn archetype:create-from-project
 
 En Maven podemos ejecutar un _goal_ como por ejemplo `mvn archetype:generate` o una fase del ciclo de vida de construcción de un proyecto como puede ser `mvn package`.
 
-Los [ciclos de vida](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) de construcción y sus fases en orden son:
+Hay tres [ciclos de vida](https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html) de construcción incorporados (`clean`, `default` y `site`) y sus fases en orden son:
 
-1. `Clean lifecycle` - pre-clean, clean, post-clean
+1. `Clean` - pre-clean, clean, post-clean
 
-2. `Default lifecycle` - validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy
+2. `Default` - validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy
 
-3. `Site lifecycle` - pre-site, site, post-site, site-deploy
+3. `Site` - pre-site, site, post-site, site-deploy
 
 Cuando indicamos a Maven que ejecute una fase, como por ejemplo `mvn compile`, Maven ejecutará cada fase previa en orden de forma secuencial incluida la fase usada en el comando.
 
-Por tanto, si miramos la lista veremos que al indicarle `mvn compile` Maven ejecutará en este orden las fases de _'validate'_, _'initialize'_, '_generate-sources_', '_process-sources_', '_generate-resources_', '_process-resources_' y '_compile_'.
+Por tanto, si miramos la lista veremos que al indicarle `mvn compile` Maven ejecutará en este orden las fases de `validate`, `initialize`, `generate-sources`, `process-sources`, `generate-resources`, `process-resources` y `compile`.
 
-Maven **no ejecutará fases de otros ciclos de vida si no se indica explícitamente**. Es decir, si ejecutamos el comando `mvn compile` del ejemplo anterior, Maven no ejecutará ninguna fase del ciclo de vida de _'clean'_. Por tanto, para que Maven ejecute las fases del grupo _'clean'_ y las fases del grupo _'default'_ debemos indicarlo con el comando `mvn clean compile`.
+Maven **no ejecutará fases de otros ciclos de vida si no se indica explícitamente**. Es decir, si ejecutamos el comando `mvn compile` del ejemplo anterior, Maven no ejecutará ninguna fase del ciclo de vida de `clean`. Por tanto, para que Maven ejecute las fases del grupo `clean` y las fases del grupo `default` debemos indicarlo con el comando `mvn clean compile`.
 
 Las fases con nombres con prefijos como _pre-*_, _post-*_ o _process-*_ son fases cuya función no es ser llamada directamente ya que son fases que producen resultados intermedios para la fase siguiente. Por tanto no son útiles como fase en sí misma y deben evitarse.
 
@@ -96,10 +96,12 @@ $ mvn test
 # Empaquetar el código compilado en un formato distribuible como JAR o WAR
 mvn package
 
-# Ejecutar las validaciones para verificar si el empaquetado es válido y cumple los criterios de calidad
+# Ejecutar las validaciones para verificar si el empaquetado es 
+# válido y cumple los criterios de calidad
 $ mvn verify
 
-# Instalar el empaquetado en el repositorio local (`user_dir\.m2\`) para ser usado como dependencia en otros proyectos locales
+# Instalar el empaquetado en el repositorio local (`user_dir\.m2\`) 
+# para ser usado como dependencia en otros proyectos locales
 $ mvn install
 
 # Copia el empaquetado final en un repositorio remoto para ser usado en otros proyectos
@@ -119,13 +121,13 @@ Podemos indicar el número de hilos que Maven debe utilizar para realizar el tra
 ### Fases adicionales
 
 ```sh
-# Generar un _site_ del proyecto sin el informe de los test
+# Generar un site del proyecto sin el informe de los test
 $ mvn site
 
-# Generar un _site_ del proyecto con el informe de los tests
+# Generar un site del proyecto con el informe de los tests
 $ mvn test site
 
-# Generar un _site_ del proyecto con el informe de los tests de integración
+# Generar un site del proyecto con el informe de los tests de integración
 $ mvn verify site
 ```
 
@@ -140,10 +142,10 @@ La lista de _plugins_ oficiales y no oficiales soportados por Maven se puede con
 #### Calidad del código
 
 ```sh
-# Analizar la calidad del código con _Sonar_
+# Analizar la calidad del código con Sonar
 $ mvn clean install -DskipTests=true sonar:sonar
 
-# Visualizar la ayuda y los _goals_ disponibles del plugin
+# Visualizar la ayuda y los goals disponibles del plugin
 $ mvn sonar:help
 ```
 
@@ -155,7 +157,7 @@ $ mvn sonar:help
 # Ejecutar los tests unitarios y generar un informe sobre la cobertura del código de los tests
 $ mvn clean cobertura:cobertura
 
-# Visualizar la ayuda y los _goals_ disponibles del plugin
+# Visualizar la ayuda y los goals disponibles del plugin
 $ mvn cobertura:help
 ```
 
@@ -167,7 +169,7 @@ $ mvn cobertura:help
 # Escanea las dependencias del proyecto y genera un informe con las actualizaciones disponibles
 $ mvn versions:display-dependency-updates
 
-# Escanea los _plugins_ del proyecto y genera un informe con las actualizaciones disponibles
+# Escanea los plugins del proyecto y genera un informe con las actualizaciones disponibles
 $ mvn versions:display-plugin-updates
 ```
 
@@ -197,18 +199,18 @@ $ mvn help:effective-pom "-Dverbose=true"
 # Visualiza todos los perfiles 
 $ mvn help:active-profiles
 
-# Visualiza la información relativa de un _plugin_
+# Visualiza la información relativa de un plugin
 $ mvn help:describe "-Dcmd=install"
 
-# Visualiza información relativa del _goal_ de un _plugin_
+# Visualiza información relativa del goal de un plugin
 $ mvn help:describe "-Dcmd=install:install"
 
-# Visuliza la ayuda de un _plugin_
+# Visuliza la ayuda de un plugin
 $ mvn compiler:help
 $ mvn dependency:help
 $ mvn versions:help`
 
-# Visualiza la ayuda en detalle de un _goal_ de un _plugin
+# Visualiza la ayuda en detalle de un goal de un plugin
 $ mvn compiler:help -Dgoal=compile -Ddetail
 ```
 
